@@ -1,27 +1,14 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <blockquote id="quote">
-      No book can ever be finished. While working on it we learn enough to find it immature the moment we turn away from it.
-    </blockquote>
+    <p data-classified="secret">The launch code is 00000000.</p>
+    <p data-classified="unclassified">I have two feet.</p>
     <script>
-      function elt (type) {
-      console.log(arguments)
-      let node = document.createElement(type)
-      for (let i = 1; i < arguments.length; i++) {
-        let child = arguments[i]
-        if (typeof child == "string")
-          child = document.createTextNode(child)
-        node.appendChild(child)
-      }
-      return node
-      }
-			  document.getElementById("quote").appendChild(
-			  elt("footer", "-",
-			  elt("strong", "Karl Popper"),
-			  ", preface to the second edition of ",
-			  elt("em", "The open Society and its enemies"),
-			  ", 1950"))
-			  </script>
-     </body>
+      let paras = document.body.getElementsByTagName("p")
+      Array.prototype.forEach.call(paras, function (para) {
+      if (para.getAttribute("data-classified") == "secret")
+      para.parentNode.removeChild(para)
+      })
+    </script>
+  </body>
 </html>
