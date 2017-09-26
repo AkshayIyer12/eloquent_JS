@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
   <body>
-
-    <p>One</p>
-    <p>Two</p>
-    <p>Three</p>
-    <p>Four</p>
-    <p>Five</p>
-<script>
-  var paragraphs = document.body.getElementsByTagName("p");
-  document.body.replaceChild(paragraphs[0], paragraphs[4]);
-</script>
+    <p>The <img src="./images/cat.jpg" alt="Cat"> in the <img src="./images/hat.jpg" alt="Hat">.</p>
+    <p><button onclick="replaceImages()">Replace</button></p>
+    <script>
+      function replaceImages () {
+      let images = document.body.getElementsByTagName("img")
+      console.log(images)
+      for (let i = images.length - 1; i >= 0; i --) {
+      let image = images[i]
+      if (image.alt) {
+      let text = document.createTextNode(image.alt)
+      image.parentNode.replaceChild(text, image)
+      }
+      }
+      }
+    </script>
   </body>
 </html>
