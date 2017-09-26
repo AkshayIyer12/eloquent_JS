@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <p>The <img src="./images/cat.jpg" alt="Cat"> in the <img src="./images/hat.jpg" alt="Hat">.</p>
-    <p><button onclick="replaceImages()">Replace</button></p>
+    <blockquote id="quote">
+      No book can ever be finished. While working on it we learn enough to find it immature the moment we turn away from it.
+    </blockquote>
     <script>
-      function replaceImages () {
-      let images = document.body.getElementsByTagName("img")
-      console.log(images)
-      for (let i = images.length - 1; i >= 0; i --) {
-      let image = images[i]
-      if (image.alt) {
-      let text = document.createTextNode(image.alt)
-      image.parentNode.replaceChild(text, image)
+      function elt (type) {
+      console.log(arguments)
+      let node = document.createElement(type)
+      for (let i = 1; i < arguments.length; i++) {
+        let child = arguments[i]
+        if (typeof child == "string")
+          child = document.createTextNode(child)
+        node.appendChild(child)
       }
+      return node
       }
-      }
-    </script>
-  </body>
+			  document.getElementById("quote").appendChild(
+			  elt("footer", "-",
+			  elt("strong", "Karl Popper"),
+			  ", preface to the second edition of ",
+			  elt("em", "The open Society and its enemies"),
+			  ", 1950"))
+			  </script>
+     </body>
 </html>
