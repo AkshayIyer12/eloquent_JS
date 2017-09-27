@@ -1,9 +1,24 @@
 <html>
+<style>
+      body {
+      height: 200px;
+      background: green;
+      }
+      .dot {
+      height: 8px; width: 8px;
+      border-radius: 4px;
+      background: blue;
+      position: absolute;
+      }
+    </style>
   <body>
-    <p>Focus this page and type something.</p>
     <script>
-      addEventListener("keypress", function (event) {
-      console.log(String.fromCharCode(event.charCode))
+      addEventListener("click", function (event) {
+      let dot = document.createElement("div")
+      dot.className = "dot"
+      dot.style.left = (event.pageX - 4) + "px"
+      dot.style.top = (event.pageY - 4) + "px"
+      document.body.appendChild(dot)
       })
       </script>
     </body>
