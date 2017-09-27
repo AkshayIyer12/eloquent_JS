@@ -1,12 +1,11 @@
 <html>
   <body>
-    <button>A</button>
-    <button>B</button>
-    <button>C</button>
+    <a href="https://developer.mozilla.org/">MDN</a>
     <script>
-      document.body.addEventListener("click", function (event) {
-      if (event.target.nodeName == "BUTTON")
-      console.log("Clicked", event.target.textContent)
+      let link = document.querySelector("a")
+      link.addEventListener("click", function(event) {
+      console.log("Nope.")
+      event.preventDefault()
       })
       </script>
     </body>
