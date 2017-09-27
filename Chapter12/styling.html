@@ -1,19 +1,20 @@
 <html>
   <body>
-    <p>And if you go chasing
-      <span class="animal">rabbits</span></p>
-    <p>And you know you're going to fall</p>
-    <p>Tell 'em a <span class="character">hookah smoking
-	<span class="animal">caterpillar</span></span></p>
-    <p>Has given you the call</p>
+    <p style="text-align: center">
+      <img src="./images/cat.jpg" style="position: relative">
+    </p>
     <script>
-      function count(selector) {
-      return document.querySelectorAll(selector).length
+      let cat = document.querySelector("img")
+      let angle = 0, lastTime = null
+      function animate(time) {
+      if (lastTime !== null)
+      angle += (time - lastTime) * 0.01
+      lastTime = time
+      cat.style.top = (Math.sin(angle) * 50) + "px"
+      cat.style.left = (Math.cos(angle) * 200) + "px"
+      requestAnimationFrame(animate)
       }
-      console.log(count("p"))
-      console.log(count(".animal"))
-      console.log(count("p .animal"))
-      console.log(count("p > .animal"))
+      requestAnimationFrame(animate)
       </script>
   </body>
   </html>
