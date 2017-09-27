@@ -1,12 +1,14 @@
 <html>
   <body>
-    <button>Click me!</button>
+    <button>Act-once button</button>
     <p>No handler here.</p>
     <script>
       let button = document.querySelector("button")
-      button.addEventListener("click", function() {
-      console.log("Button clicked!")
-      })
+      function once () {
+      console.log("Done.")
+      button.removeEventListener("click", once)
+      }
+      button.addEventListener("click", once)
     </script>
     </body>
   </html>
