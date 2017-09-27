@@ -1,20 +1,31 @@
 <html>
+  <style>
+    .progress {
+    border: 1px solid blue;
+    width: 100px;
+    position: fixed;
+    top: 10px; right: 10px;
+    }
+    .progress > div {
+    height: 12px;
+    background: blue;
+    width: 0%;
+    }
+    body {
+    height: 2000px;
+    }
+  </style>
   <body>
-    <p>Hover over this <strong>paragraph</strong>.</p>
+    <div class="progress"><div></div></div>
+    <p>Scroll me...</p>
     <script>
-      let para = document.querySelector("p")
-      function isInside(node, target) {
-      for(; node != null; node = node.parentNode)
-      if (node === target) return true
-      }
-      para.addEventListener("mouseover", function(event) {
-      if (!isInside(event.relatedTarget, para))
-      para.style.color = "red"
+      let bar = document.querySelector(".progress div")
+      addEventListener("scroll", function() {
+      console.log(document.body.scrollHeight, innerHeight)
+      let max = document.body.scrollHeight - innerHeight
+      let percent = (pageYOffset / max) * 100
+      bar.style.width = percent + "%"
       })
-      para.addEventListener("mouseout", function(event) {
-      if (!isInside(event.relatedTarget, para))
-      para.style.color = ""
-      })
-      </script>
-</body>
+    </script>
+    </body>
 </html>
