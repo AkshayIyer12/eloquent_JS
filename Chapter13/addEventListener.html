@@ -1,9 +1,11 @@
 <html>
   <body>
-    <p>Click this document to activate the handler.</p>
+    <button>Click me!</button>
+    <p>No handler here.</p>
     <script>
-      addEventListener("click", function() {
-      console.log("You clicked!")
+      let button = document.querySelector("button")
+      button.addEventListener("click", function() {
+      console.log("Button clicked!")
       })
     </script>
     </body>
