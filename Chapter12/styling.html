@@ -1,11 +1,19 @@
 <html>
   <body>
-    <style>
-      strong {
-      font-style: italic;
-      color: gray;
+    <p>And if you go chasing
+      <span class="animal">rabbits</span></p>
+    <p>And you know you're going to fall</p>
+    <p>Tell 'em a <span class="character">hookah smoking
+	<span class="animal">caterpillar</span></span></p>
+    <p>Has given you the call</p>
+    <script>
+      function count(selector) {
+      return document.querySelectorAll(selector).length
       }
-    </style>
-    <p>Now <strong>strong text</strong> is italic and gray.</p>
+      console.log(count("p"))
+      console.log(count(".animal"))
+      console.log(count("p .animal"))
+      console.log(count("p > .animal"))
+      </script>
   </body>
   </html>
