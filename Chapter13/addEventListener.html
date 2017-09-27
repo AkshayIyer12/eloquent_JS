@@ -1,19 +1,12 @@
 <html>
   <body>
-    <p>This page turns violet when you hold the V key.</p>
+    <p>Press Ctrl-Space to continue.</p>
     <script>
       addEventListener("keydown", function (event) {
-      if (event.keyCode == 86) {
-      document.body.style.background = "violet"
+      if (event.keyCode === 32 && event.ctrlKey) {
+      console.log("Continuing!")
       }
       })
-      addEventListener("keyup", function (event) {
-      if (event.keyCode == 86) {
-      document.body.style.background = "red"
-      }
-      })
-      console.log("Violet".charCodeAt(0))
-      console.log("1D".charCodeAt(1))
       </script>
     </body>
   </html>
