@@ -1,31 +1,21 @@
 <html>
-  <style>
-    .progress {
-    border: 1px solid blue;
-    width: 100px;
-    position: fixed;
-    top: 10px; right: 10px;
-    }
-    .progress > div {
-    height: 12px;
-    background: blue;
-    width: 0%;
-    }
-    body {
-    height: 2000px;
-    }
-  </style>
   <body>
-    <div class="progress"><div></div></div>
-    <p>Scroll me...</p>
+<p>Name: <input type="text" data-help="Your full name"></p>
+<p>Age: <input type="text" data-help="Age in years"></p>
+<p id="help"></p>
+    
     <script>
-      let bar = document.querySelector(".progress div")
-      addEventListener("scroll", function() {
-      console.log(document.body.scrollHeight, innerHeight)
-      let max = document.body.scrollHeight - innerHeight
-      let percent = (pageYOffset / max) * 100
-      bar.style.width = percent + "%"
-      })
-    </script>
+      let help = document.querySelector("#help")
+      let fields = document.querySelectorAll("input")
+      for (let i = 0; i < fields.length; i++) {
+			  fields[i].addEventListener("focus", function (event) {
+			  let text = event.target.getAttribute("data-help")
+			  help.textContent = text
+			  })
+			  fields[i].addEventListener("blur", function (event) {
+			  help.textContent = ""
+			  })
+			  }
+			  </script>
     </body>
 </html>
