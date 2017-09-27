@@ -1,16 +1,18 @@
 <html>
   <body>
-    <button>Click me any way you want</button>
+    <p>A paragraph with a <button>button</button>.</p>
     <script>
+      let para = document.querySelector("p")
       let button = document.querySelector("button")
-      button.addEventListener("mousedown", function(event) {
-      if (event.which === 1)
-      console.log("Left button")
-      if (event.which === 2)
-      console.log("Middle button")
-      if (event.which === 3)
-      console.log("Right button")
+      para.addEventListener("mousedown", function () {
+      console.log("Handler for paragraph")
       })
-    </script>
+      button.addEventListener("mousedown", function (event) {
+      console.log("Handler for button.")
+      if (event.which === 3) {
+        event.stopPropagation()
+      }
+      })
+      </script>
     </body>
   </html>
