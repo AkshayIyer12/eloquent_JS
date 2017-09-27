@@ -1,11 +1,9 @@
 <html>
   <body>
-    <p>Press Shift-Space to continue.</p>
+    <p>Focus this page and type something.</p>
     <script>
-      addEventListener("keydown", function (event) {
-      if (event.keyCode === 32 && event.shiftKey) {
-      console.log("Continuing!")
-      }
+      addEventListener("keypress", function (event) {
+      console.log(String.fromCharCode(event.charCode))
       })
       </script>
     </body>
