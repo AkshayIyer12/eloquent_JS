@@ -1,14 +1,16 @@
 <html>
   <body>
-    <button>Act-once button</button>
-    <p>No handler here.</p>
+    <button>Click me any way you want</button>
     <script>
       let button = document.querySelector("button")
-      function once () {
-      console.log("Done.")
-      button.removeEventListener("click", once)
-      }
-      button.addEventListener("click", once)
+      button.addEventListener("mousedown", function(event) {
+      if (event.which === 1)
+      console.log("Left button")
+      if (event.which === 2)
+      console.log("Middle button")
+      if (event.which === 3)
+      console.log("Right button")
+      })
     </script>
     </body>
   </html>
