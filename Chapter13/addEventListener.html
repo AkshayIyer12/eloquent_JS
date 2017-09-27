@@ -1,37 +1,20 @@
 <html>
   <body>
-    <p>Drag the bar to change its width:</p>
-    <div style="background: orange; width: 60px; height: 20px">
-    </div>
+    <p>Hover over this <strong>paragraph</strong>.</p>
     <script>
-      let lastX
-      let rect = document.querySelector("div")
-      rect.addEventListener("mousedown", function (event) {
-      if (event.which == 1) {
-      lastX = event.pageX
-      addEventListener("mousemove", moved)
-      event.preventDefault()
+      let para = document.querySelector("p")
+      function isInside(node, target) {
+      for(; node != null; node = node.parentNode)
+      if (node === target) return true
       }
+      para.addEventListener("mouseover", function(event) {
+      if (!isInside(event.relatedTarget, para))
+      para.style.color = "red"
       })
-
-      function buttonPressed (event) {
-      console.log(event.buttons, event.buttons !== 0, !(event.buttons !== 0))
-      if (event.buttons === null)
-      return event.which !== 0
-      else
-      return event.buttons !== 0
-      }
-
-      function moved (event) {
-      if (!buttonPressed(event)) {
-      removeEventListener("mousemove", moved)
-      } else {
-      let dist = event.pageX - lastX
-      let newWidth = Math.max(10, rect.offsetWidth + dist)
-      rect.style.width = newWidth + "px"
-      lastX = event.pageX
-      }
-      }
+      para.addEventListener("mouseout", function(event) {
+      if (!isInside(event.relatedTarget, para))
+      para.style.color = ""
+      })
       </script>
 </body>
 </html>
