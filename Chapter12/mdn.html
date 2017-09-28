@@ -1,5 +1,15 @@
 <html>
-  <body onload="window.alert('Welcome to my home page!');">
-    <p>Hello</p>
+  <head>
+    <script>
+     window.onload = function() {
+       let heading = document.createElement("h1")
+       let heading_text = document.createTextNode("Big Head!")
+       heading.appendChild(heading_text)
+       document.body.appendChild(heading)
+     }
+    </script>
+  </head>
+  <body>
+    <h1>Hi</h1>
   </body>
 </html>
