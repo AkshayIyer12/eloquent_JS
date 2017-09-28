@@ -2,17 +2,14 @@
   <body>
     <p>Hello</p>
   <script>
-    document.body.style.background = "blue"
-    setTimeout (function () {
-    document.body.style.background = "yellow"
-    }, 2000)
-    let bombTimer = setTimeout(function () {
-    console.log("BOOM!")
-    }, 500)
-    if (Math.random() < 0.5) {
-			console.log("Defused")
-			clearTimeout(bombTimer)
-			}
+    let ticks = 0
+    let clock = setInterval(function () {
+    console.log("tick ", ticks++)
+    if (ticks === 10) {
+    clearInterval(clock)
+    console.log("stop.")
+    }
+    }, 200)
   </script>
   </body>
 </html>
