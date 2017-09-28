@@ -1,15 +1,15 @@
 <html>
   <body>
-    <p>Hello</p>
-  <script>
-    let ticks = 0
-    let clock = setInterval(function () {
-    console.log("tick ", ticks++)
-    if (ticks === 10) {
-    clearInterval(clock)
-    console.log("stop.")
-    }
-    }, 200)
-  </script>
+    <textarea>Type something here...</textarea>
+    <script>
+      let textarea = document.querySelector("textarea")
+      let timeout
+      textarea.addEventListener("keydown", function () {
+      clearTimeout(timeout)
+      timeout = setTimeout(function () {
+      console.log("You stopped typing.")
+      }, 500)
+      })
+      </script>
   </body>
 </html>
