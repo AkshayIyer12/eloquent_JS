@@ -11,3 +11,8 @@ var theNumber = Number(prompt("Pick a number", ""));
 if (!isNaN(theNumber)) alert("Your number is the square root of "+ theNumber * theNumber)
 else
   alert("Hey. Why didn't you give me a number?")
+
+function max() {
+ return Array.from(arguments).sort((a,b) => a-b)[arguments.length-1]
+}
+max(...Array.from({length: 100}, () => Math.floor(Math.random() * 40)))
