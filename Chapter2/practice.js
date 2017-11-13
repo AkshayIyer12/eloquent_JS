@@ -16,3 +16,18 @@ function max() {
  return Array.from(arguments).sort((a,b) => a-b)[arguments.length-1]
 }
 max(...Array.from({length: 100}, () => Math.floor(Math.random() * 40)))
+
+Function.prototype.curry = function (...curryArgs) {
+	if (curryArgs.length < 1) return this
+	let __method = this
+	return function (...args) {
+		return __method.apply(this, curryArgs.concat(args))
+    }
+}
+
+function print(a) {
+	process.stdout.write(""+arguments+"\n")
+}
+function isnan (a) {
+	return a !== a
+}
