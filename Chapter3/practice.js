@@ -29,4 +29,25 @@ var f2 = function () {
 f2()
 console.log(x)
 
-
+var landscape = function () {
+  var result = ''
+  var flat = function (size) {
+    for (var count = 0; count < size; count++) {
+      result += '_'
+    }
+  }
+  var mountain = function (size) {
+    result += '/'
+    for (var count = 0; count < size; count++) {
+      result += "'"
+    }
+    result += '\\'
+  }
+  flat(3)
+  mountain(4)
+  flat(6)
+  mountain(4)
+  flat(3)
+  return result
+}
+console.log(landscape())
