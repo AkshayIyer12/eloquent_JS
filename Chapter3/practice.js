@@ -123,5 +123,130 @@ function egg () {
   return chicken()
 }
 
-console.log(chicken() + ' came first')
+// console.log(chicken() + ' came first')
 
+function powerUp (base, exponent) {
+  if (exponent === undefined) {
+    exponent = 2
+  }
+  var result = 1
+  for (var count = 0; count < exponent; count++) {
+    result *= base
+  }
+  return result
+}
+
+console.log(powerUp(4))
+
+console.log(powerUp(4, 3))
+
+console.log('R', 2, 'D', 2)
+
+// closures
+function wrapValue (n) {
+  var localVariable = n
+  return function () {
+    return localVariable
+  }
+}
+
+var wrap1 = wrapValue(1)
+var wrap2 = wrapValue(2)
+
+console.log(wrap1())
+console.log(wrap2())
+
+// iife
+let fp = (function wrapValue () {
+  var localVariable = 1
+  return function () {
+    return localVariable++
+  }
+}())
+
+for (let i = 0; i < 5; i++) {
+  console.log(fp())
+}
+
+function multiplier (factor) {
+  return function (number) {
+    return number * factor
+  }
+}
+
+var twice = multiplier(2)
+console.log(twice(5))
+
+function powered (base, exponent) {
+  if (exponent === 0) {
+    return 1
+  } else {
+    return base * powered(base, exponent - 1)
+  }
+}
+
+console.log(powered(2, 3))
+
+function findSolution (target) {
+  function find (current, history) {
+    if (current === target) {
+      return history
+    } else if (current > target) {
+      return null
+    } else {
+      return find(current + 5, '(' + history + ' + 5) ') ||
+      find(current * 3, '(' + history + ' * 3)')
+    }
+  }
+  return find(1, '1')
+}
+
+console.log(findSolution(14))
+
+
+// Why we require a function ?
+function printFarmInventory (cows, chickens) {
+  var cowString = String(cows)
+  while (cowString.length < 3) {
+    cowString = '0' + cowString
+  }
+  console.log(cowString + ' Cows')
+  var chickenString = String(chickens)
+  while (chickenString.length < 3) {
+    chickenString = '0' + chickenString
+  }
+  console.log(chickenString + ' Chickens')
+}
+
+printFarmInventory(7, 11)
+
+function printZeroPaddedWithLabel (number, label) {
+  var numberString = String(number)
+  while (numberString.length < 3) {
+    numberString = '0' + numberString
+  }
+  console.log(numberString + ' ' + label)
+}
+
+function printFarmInventory2 (cows, chickens, pigs) {
+  printZeroPaddedWithLabel(cows, 'Cows')
+  printZeroPaddedWithLabel(chickens, 'Chickens')
+  printZeroPaddedWithLabel(pigs, 'Pigs')
+}
+
+printFarmInventory2(7, 11, 8)
+
+function zeroPad (number, width) {
+  var string = String(number)
+  while (string.length < width) {
+    string = '0' + string
+  }
+  return string
+}
+function printFarmInventory3 (cows, chickens, pigs) {
+  console.log(zeroPad(cows, 3) + ' Cows')
+  console.log(zeroPad(chickens, 3) + ' Chickens')
+  console.log(zeroPad(pigs, 3) + ' Pigs')
+}
+
+printFarmInventory3(7, 16, 13)
