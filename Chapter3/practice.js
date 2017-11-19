@@ -250,3 +250,51 @@ function printFarmInventory3 (cows, chickens, pigs) {
 }
 
 printFarmInventory3(7, 16, 13)
+
+function min (a, b) {
+  if (a < b) {
+    return a
+  } else {
+    return b
+  }
+}
+console.log(min(0, 10))
+console.log(min(0, -10))
+
+function isEven (a) {
+  if (a === 0) {
+    return true
+  } else if (a === 1) {
+    return false
+  } else if (a < 0) {
+    return isEven(-a)
+  } else {
+    return isEven(a - 2)
+  }
+}
+console.log(isEven(50))
+console.log(isEven(13))
+console.log(isEven(-2))
+console.log(isEven(-13))
+
+function countBs (str) {
+  return str.split('').reduce((accum, value) => {
+    if (value === 'B') {
+      accum += 1
+    }
+    return accum
+  }, 0)
+}
+console.log(countBs('BgBCBeBaBfBdBC'))
+console.log(countBs('Bc'))
+
+function countChar (str, char) {
+  return str.split('').reduce((accum, value) => {
+    if (value === char) {
+      accum += 1
+    }
+    return accum
+  }, 0)
+}
+
+console.log(countChar('kakkerlak', 'k'))
