@@ -51,3 +51,77 @@ var landscape = function () {
   return result
 }
 console.log(landscape())
+
+var something = 1
+{
+  var something = 2
+  something = something << 1
+}
+console.log(something)
+
+var some = 1
+{
+  let some = 2
+  some = some << 1
+}
+console.log(some)
+
+var launchMissiles = function (value) {
+  console.log('Do something ' + value)
+}
+var safeMode = 0
+// Truthy / falsy values
+if (safeMode) {
+  launchMissiles = function (value) {
+    console.log('Do nothing ' + value)
+  }
+  launchMissiles('World')
+}
+
+launchMissiles('GNU')
+
+// Declaration Notation
+function square (x) {
+  return x * x
+}
+
+// Function declarations are not part of top to bottom flow
+console.log('The future says:', future())
+
+function future () {
+  return 'We STILL have no flying cars.'
+}
+
+function example () {
+  function a () {
+    return 20
+  }
+  if (something) {
+    // Never declare function inside
+    function b () {
+      return 5
+    }
+    console.log(b())
+  }
+  console.log(a())
+}
+
+example()
+
+function greet(who) {
+  console.log('Hello ' + who)
+}
+greet('harry')
+console.log('Bye')
+
+// Max call stack size exceeded
+function chicken () {
+  return egg()
+}
+
+function egg () {
+  return chicken()
+}
+
+console.log(chicken() + ' came first')
+
