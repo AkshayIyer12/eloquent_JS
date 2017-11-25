@@ -228,4 +228,42 @@ function sum (arr) {
   }, 0)
   return summedUp
 }
+
 console.log(sum(range(5, 2, -1)))
+
+function arrayToReverseList (array) {
+  let list = null
+  for (let i = 0; i < array.length; i++) {
+    list = {
+      value: array[i],
+      rest: list
+    }
+  }
+  return list
+}
+
+console.log(arrayToReverseList([1, 2, 3]))
+
+function arrayToList (arr) {
+  let list = null
+  for (let i = arr.length - 1; i >= 0; i--) {
+    list = {
+      value: arr[i],
+      rest: list
+    }
+  }
+  return list
+}
+
+console.log(arrayToList([10, 20, 30]))
+
+function listToArray (list) {
+  let array = []
+  for (let nodal = list; nodal; nodal = nodal.rest) {
+    array.push(nodal.value)
+  }
+  return array
+}
+
+console.log(listToArray(arrayToList([10, 20, 30])))
+console.log(listToArray(arrayToReverseList([1, 2, 3])).reverse())
