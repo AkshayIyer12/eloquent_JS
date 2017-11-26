@@ -89,3 +89,33 @@ function filter (array, test) {
 console.log(filter(ancestry, function (person) {
   return person.born > 1900 && person.born < 1925
             }))
+
+console.log(ancestry.filter(function (person) {
+              return person.father === 'Carel Haverbeke'
+            }))
+
+function map (array, transform) {
+  let mapped = []
+  for (let i = 0; i < array.length; i++) {
+    mapped.push(transform(array[i]))
+  }
+  return mapped
+}
+
+let overNinety = ancestry.filter(function (person) {
+                   return person.died - person.born > 90
+                 })
+
+console.log(map(overNinety, function (person) {
+              return person.name
+            }))
+function reduce (array, combine, start) {
+  let current = start
+  for (let i = 0; i < array.length; i++) {
+    current = combine(current, array[i])
+  }
+  return current
+}
+console.log(reduce([1, 2, 3, 4], function (a, b) {
+              return a + b
+            }, 0))
