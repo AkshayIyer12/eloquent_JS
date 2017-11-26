@@ -119,3 +119,40 @@ function reduce (array, combine, start) {
 console.log(reduce([1, 2, 3, 4], function (a, b) {
               return a + b
             }, 0))
+
+console.log(ancestry.reduce(function (min, cur) {
+              if (cur.born < min.born) return cur
+              else return min
+            }))
+
+let min = ancestry[0]
+for (let j = 0; j < ancestry.length; j++) {
+  let cur = ancestry[j]
+  if (cur.born < min.born) {
+    min = cur
+  }
+}
+console.log(min)
+
+function average (array) {
+  function plus (a, b) {
+    return a + b
+  }
+  return array.reduce(plus) / array.length
+}
+
+function age (p) {
+  return p.died - p.born
+}
+
+function male (p) {
+  return p.sex === 'm'
+}
+
+function female (p) {
+  return p.sex === 'f'
+}
+
+console.log(average(ancestry.filter(male).map(age)))
+
+console.log(average(ancestry.filter(female).map(age)))
