@@ -185,3 +185,47 @@ function sharedDNA (person, fromMother, fromFather) {
 
 let ph = byName['Philibert Haverbeke']
 console.log(reduceAncestors(ph, sharedDNA, 0) / 4)
+
+function countAncestors(person, test) {
+  function combine(current, fromMother, fromFather) {
+    let thisOneCounts = current !== person && test(current)
+    return fromMother + fromFather + (thisOneCounts ? 1 : 0)
+  }
+  return reduceAncestors(person, combine, 0)
+}
+
+function longLivingPercentage (person) {
+  let all = countAncestors(person, function (person) {
+              return true
+            })
+  let longLiving = countAncestors(person, function (person) {
+                     return (person.died - person.born) >= 70
+                   })
+  return longLiving / all
+}
+
+console.log(longLivingPercentage(byName['Emile Haverbeke']))
+
+let theSet = ["Carel Haverbeke", "Maria van Brussel",
+              "Donald Duck"]
+
+function isInSet (set, person) {
+  return set.indexOf(person.name) > -1
+}
+
+console.log(ancestry.filter(function (person) {
+              return isInSet(theSet, person)
+            }))
+
+console.log(ancestry.filter(isInSet.bind(null, theSet)))
+
+let arrays = [[1, 2, 3], [4, 5], [6, 7]]
+let flatArray = arrays.reduce((a, v) => a.concat(v))
+console.log(flatArray)
+
+let diff = ancestry.filter(function(person) {
+  return byName[person.mother] !== undefined
+}).map(function(person) {
+  return person.born - byName[person.mother].born
+})
+console.log(average(diff))
