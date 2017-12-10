@@ -247,3 +247,24 @@ for (let century in byCentury) {
   let ages = byCentury[century].map(p => p.died - p.born)
   console.log(century + ': ' + avg(ages))
 }
+
+const every = (arr, pred) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (!pred(arr[i])) return false
+  }
+  return true
+}
+
+const some = (arr, pred) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (pred(arr[i])) return true
+  }
+  return false
+}
+console.log(every([NaN, NaN, NaN], isNaN))
+
+console.log(every([NaN, NaN, 4], isNaN))
+
+console.log(some([NaN, 3, 4], isNaN))
+
+console.log(some([2, 3, 4], isNaN))
