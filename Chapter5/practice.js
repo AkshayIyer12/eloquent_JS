@@ -229,3 +229,21 @@ let diff = ancestry.filter(function(person) {
   return person.born - byName[person.mother].born
 })
 console.log(average(diff))
+
+const assignToCentury = data => data.reduce((a, v) => {
+  let yr = Math.ceil(v.died/100)
+  if (a[yr]) a[yr].push(v)
+  else {
+    a[yr] = []
+    a[yr].push(v)
+  }
+  return a
+}, {})
+let byCentury = assignToCentury(ancestry)
+
+
+const avg = arr => arr.reduce((a, b) => a+b, 0)/arr.length
+for (let century in byCentury) {
+  let ages = byCentury[century].map(p => p.died - p.born)
+  console.log(century + ': ' + avg(ages))
+}
