@@ -307,3 +307,23 @@ function logFive2 (seq) {
 
 logFive2(ArraySeq2.make([ 1, 2, 3]))
 logFive2(ArraySeq2.make([1, 2, 3, 4, 5, 6]).rest())
+
+function RangeSeq2 (from, to) {
+    this.from = from
+    this.to = to
+}
+
+RangeSeq2.prototype.rest = function () {
+    return RangeSeq2.make(this.from + 1, this.to)
+}
+
+RangeSeq2.prototype.head = function () {
+    return this.from
+}
+
+RangeSeq2.make = function (from, to) {
+    if (from > to) return null
+    else return new RangeSeq2(from, to)
+}
+
+logFive2(RangeSeq2.make(400, 1000).rest())
